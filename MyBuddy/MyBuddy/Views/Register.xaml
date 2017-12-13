@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyBuddy.Register"  xmlns:local="clr-namespace:MyBuddy" BackgroundColor="White" >
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:MultiTriggerConverter x:Key="dataHasBeenEntered" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+
+        <StackLayout  Style="{StaticResource DefaultStackLayout }" Padding="20,50,15,20">
+            <Label Text="MyBuddy" Style="{StaticResource LabelPageHeadingStyle}" FontSize="Large" FontAttributes="Italic"/>
+            <StackLayout Padding="0,10,0,20" HorizontalOptions="FillAndExpand" >
+                <Image x:Name="imdAddPic" Source="add_image.png">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TakePicture}"
+                NumberOfTapsRequired="1" />
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <Entry x:Name="txtName" Placeholder="Name" Text="{Binding User.Name}" Style="{StaticResource EntryEffectStyle }">
+                <Entry.Triggers>
+                    <EventTrigger Event="TextChanged">
+                        <local:EmailValidationTriggerAction />
+                    </EventTrigger>
+                </Entry.Triggers>
+            </Entry>
+            <Entry x:Name="txtEmail" Placeholder="Email"  Text="{Binding User.Email}" Style="{StaticResource EntryEffectStyle }"/>
+            <StackLayout Orientation="Horizontal" Spacing="0">
+                <Entry x:Name="txtPwd" Placeholder="Password"  Text="{Binding User.Password}" IsPassword="{Binding IsPassword}" Style="{StaticResource EntryEffectStyle }" />
+                <Button x:Name="btnShowHidePwd"  WidthRequest="50" BackgroundColor="Transparent" VerticalOptions="FillAndExpand" Image="{Binding PasswordImage}" Command="{Binding OnShowHidePassword}" />
+            </StackLayout>
+            <StackLayout Padding="0,20,0,20" HorizontalOptions="FillAndExpand" >
+                <Button x:Name="btnSignUp" Text="Sign up" Style="{StaticResource DefaultButtonStyle }" Command="{Binding OnRegisterUser}">
+                    <Button.Triggers>
+                        <MultiTrigger TargetType="Button">
+                            <MultiTrigger.Conditions>
+                                <BindingCondition Binding="{Binding Source={x:Reference txtName},
+                              Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                          Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference txtEmail},
+                              Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                          Value="true" />
+                                <BindingCondition Binding="{Binding Source={x:Reference txtPwd },
+                              Path=Text.Length,
+                              Converter={StaticResource dataHasBeenEntered}}"
+                          Value="true" />
+                            </MultiTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True" />
+
+                        </MultiTrigger>
+                    </Button.Triggers>
+                </Button>
+                <ActivityIndicator Color="{Binding Primary}" IsRunning="{Binding IsBusy, Mode=TwoWay}" />
+            </StackLayout>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyBuddy.App"  xmlns:local="clr-namespace:MyBuddy" >
+  <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="Black">#000000</Color>
+            <Color x:Key="Primary">#28A956</Color>
+            <Color x:Key="PrimaryDark">#1976D2</Color>
+            <Color x:Key="Accent">#96d1ff</Color>
+            <Color x:Key="LightBackgroundColor">#FAFAFA</Color>
+            <Color x:Key="DarkBackgroundColor">#C0C0C0</Color>
+            <Color x:Key="MediumGrayTextColor">#807F83</Color>
+            <Color x:Key="LightTextColor">#B3B3B3</Color>
+            <Color x:Key="WhiteColor">#FFFFFF</Color>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+
+            <Style x:Key="LabelPageHeadingStyle" TargetType="Label">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+            </Style>
+
+            <Style x:Key="DefaultButtonStyle" TargetType="Button">
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="HeightRequest" Value="65" />
+            </Style>
+
+            <Style x:Key="DefaultStackLayout" TargetType="StackLayout">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Padding" Value="15,15,15,15" />
+                <Setter Property="Spacing" Value="11" />
+                <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}" />
+            </Style>
+
+            <Style x:Key="DefaultEntryStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="HeightRequest" Value="45" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource LightTextColor}" />
+                <Setter Property="TextColor" Value="{StaticResource Black}" />
+            </Style>
+
+            <Style x:Key="EntryEffectStyle" TargetType="Entry" BasedOn="{StaticResource DefaultEntryStyle}">
+                <Style.Setters>
+                    <Setter Property="local:BEntryEffect.HasBorder" Value="True" />
+                </Style.Setters>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
