@@ -13,7 +13,6 @@ Purpose of this Xamarin form app is to provide a Android and iOS platform to a U
 - Central Styles
 - Custom Renderers
 - IoC
-- Messaging Center
 - Custom Controls
 - Cross Plugins
 
