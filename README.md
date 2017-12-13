@@ -7,6 +7,8 @@ Purpose of this Xamarin form app is to provide a Android and iOS platform to a U
 - Xamarin.Forms
 - XAML
 - Bindings
+- Triggers
+- Sqlite Database
 - Converters
 - Central Styles
 - Custom Renderers
